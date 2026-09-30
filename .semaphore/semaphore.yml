@@ -12,10 +12,6 @@ auto_cancel:
     when: branch != 'main'
   queued:
     when: branch = 'main'
-global_job_config:
-  prologue:
-    commands:
-      - 'sem-service start mysql:8'
 blocks:
   - name: "\U0001F9EA Test"
     dependencies: []
@@ -27,7 +23,7 @@ blocks:
             - echo "Installing dependencies..."
             - echo "Running test suite..."
             - echo "Tests completed successfully!"
-        - name: "OIDC TOKEN PAYLOAD"
+        - name: OIDC TOKEN PAYLOAD
           commands:
             - PAYLOAD=$(echo $SEMAPHORE_OIDC_TOKEN | cut -d "." -f 2 | base64 -d 2>/dev/null) || true
             - echo "OIDC Payload=$PAYLOAD"

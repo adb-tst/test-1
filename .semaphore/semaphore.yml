@@ -25,5 +25,5 @@ blocks:
             - echo "Tests completed successfully!"
         - name: OIDC TOKEN PAYLOAD
           commands:
-            - PAYLOAD=($(echo $SEMAPHORE_OIDC_TOKEN | cut -d "." -f 2 | base64 -d 2>/dev/null) | jq . ) || true
+            - PAYLOAD=$(echo $SEMAPHORE_OIDC_TOKEN | cut -d "." -f 2 | base64 -d | jq . 2>/dev/null) || true
             - echo "OIDC Payload=$PAYLOAD"

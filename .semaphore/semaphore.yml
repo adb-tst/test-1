@@ -27,3 +27,8 @@ blocks:
           commands:
             - PAYLOAD=$(echo $SEMAPHORE_OIDC_TOKEN | cut -d "." -f 2 | base64 -d | jq . 2>/dev/null) || true
             - echo "OIDC Payload=$PAYLOAD"
+        - name: Secrets
+          commands:
+            - echo $SEMAPHORE_GIT_BRANCH
+            - echo $NORMAL_VAR
+            - echo $PROJECT_SECRET

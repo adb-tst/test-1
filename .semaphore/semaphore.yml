@@ -36,6 +36,3 @@ blocks:
           commands:
             - echo "org=$SAMPLE_ORG_TOKEN ($SAMPLE_ORG_ENV)"
             - echo "project=$SAMPLE_PROJECT_TOKEN ($SAMPLE_PROJECT_ENV)"
-            - 'echo $NORMAL_VAR >> secret_file '
-            - echo $PROJECT_SECRET >> secret_file
-            - cat secret_file

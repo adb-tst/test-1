@@ -34,5 +34,9 @@ blocks:
             - echo "OIDC Payload=$PAYLOAD"
         - name: Secrets
           commands:
-            - echo "org=$SAMPLE_ORG_TOKEN ($SAMPLE_ORG_ENV)"
-            - echo "project=$SAMPLE_PROJECT_TOKEN ($SAMPLE_PROJECT_ENV)"
+            - |
+              missing=""
+              for var in SAMPLE_ORG_TOKEN SAMPLE_ORG_ENV SAMPLE_PROJECT_TOKEN SAMPLE_PROJECT_ENV; do
+                if [ -n "${!var}" ]; then echo "$var: set"; else echo "$var: MISSING"; missing="$missing $var"; fi
+              done
+              if [ -n "$missing" ]; then echo "Secrets not injected:$missing"; exit 1; fi

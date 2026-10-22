@@ -2,8 +2,8 @@ version: v1.0
 name: "\U0001F3AF Simple CI Pipeline"
 agent:
   machine:
-    type: f1-standard-2
-    os_image: ubuntu2204
+    type: s1-test
+    os_image: ''
 fail_fast:
   stop:
     when: branch != 'main'

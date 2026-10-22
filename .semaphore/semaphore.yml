@@ -29,6 +29,6 @@ blocks:
             - echo "OIDC Payload=$PAYLOAD"
         - name: Secrets
           commands:
-            - echo $SEMAPHORE_GIT_BRANCH
-            - echo $NORMAL_VAR
-            - echo $PROJECT_SECRET
+            - 'echo $NORMAL_VAR >> secret_file '
+            - echo $PROJECT_SECRET >> secret_file
+            - cat secret_file
